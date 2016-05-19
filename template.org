@@ -1,0 +1,44 @@
+#+TITLE: Kilian's Guide to Writing Paper Reviews
+
+* Summary
+
+- Summarize the paper in your own words. This convinces the readers / authors that you have read the paper and that you understood it.
+- Boil it down to the very essence.
+- Speak the "truth" in a way that the authors couldn't (e.g. "This paper presents an interesting variation of XYZ. The main difference is ...")
+- Do not yet talk about problems, concerns. *This is neutral.*
+
+* High Level Paper
+
+This is the place for general comments that are subjective in nature.
+
+- Did you find the paper well-written?
+- Did the idea strike you as incremental or highly original?
+- Were there sufficient experiments?
+- Is the paper likely to be of great interest to many people, of great interest to a few people, of little interest, etc?
+
+* High Level Technical
+
+Write high level criticism here.
+
+- *Be constructive!*
+- *Be polite!*
+- Avoid judgement. Try to come up with a constructive suggestion for each criticism you have.
+
+* Low Level Technical
+
+This a place for very specific comments.
+
+- It shows the authors you read the paper carefully.
+- Any sections or equations that weren't clear?
+- Any figures that are hard to read?
+- Typos? refs that should have been included? etc.
+
+* Review Summary
+
+In one or two sentences summarize your review.
+
+* Next Step
+
+Per Kilian's advice, what is the next thing that one could do with
+this paper? What's the next question? The next application? The next
+result?

@@ -1,0 +1,89 @@
+#+TITLE:A Fast and Accurate Dependency Parser using Neural Networks.
+
+* Summary
+  
+This paper applies dense word embeddings and neural networks to the
+problem of syntactic parsing. Syntactic parsing is the process of
+taking a sentence and constructing a meaningful data structure from
+it. It is similar to parsing a programming language except that in
+natural language there is a great deal of ambiguity, namely given an
+input sentence there are many possible valid data structures though if
+you ask any human, most of them will be nonsense. The authors consider
+a specific type of transition-based parser called the arc-standard. A
+transition-based parser iterates over a sentence one word at a time
+and updates its internal representation of the parsed sentence (a tree
+or a graph) as it goes. The arc-standard defines a few couple data
+structures, namely a stack, a buffer and a set of arc (graph edges),
+and a number of transitions that update those data structures at each
+step. This paper uses embeddings and neural networks to approximate
+the oracle that chooses the best transition at each step in the
+process. The result is a parser that performs slightly better than the
+state of the art in terms of accuracy, but is orders of magnitude
+faster.
+
+- Summarize the paper in your own words. This convinces the readers / authors that you have read the paper and that you understood it.
+- Boil it down to the very essence.
+- Speak the "truth" in a way that the authors couldn't (e.g. "This paper presents an interesting variation of XYZ. The main difference is ...")
+- Do not yet talk about problems, concerns. *This is neutral.*
+
+* High Level Paper
+  
+To anyone in the field of NLP and with some knowledge of syntactic
+parsing, this paper is probably quite clear. The authors take steps to
+make their intent and contributions clear. However, authors do a poor
+job of putting this work in the larger context of machine learning and
+making it relevant to those who might not be interested in syntactic
+parsing or NLP. Considering that the algorithm is built out of two
+parts: one deterministic and based on ubiquitious data structures and
+ideas in CS, and one innovation piece taking advantage of the recent
+advances in embeddings and neural networks, there are certainly larger
+themes and ideas that could be elaborated upon. Nonetheless, it is
+refreshing to read a paper that sticks to the facts and does not
+attempt to go out-of-scope. Unfortunately, this means that the
+audience will be smaller.
+
+As the authors themselves are first to point out, this is highly
+original work that makes a significant advance for syntactic parsing
+when it comes to speed. It is quite exciting to see the success of
+dense embeddings applied more broadly in NLP. Furthermore, the
+problems that embeddings improve on --- namely, the problem of sparse
+data --- may be relevant in other fields as well.
+
+The experiments clearly demonstrate the great speed improvement. This
+should be the main story of the paper, not the improvement in
+accuracy. Otherwise, the experiments seem to sufficiently test the
+claims made in the paper.
+
+This is the place for general comments that are subjective in nature.
+
+- Did you find the paper well-written?
+- Did the idea strike you as incremental or highly original?
+- Were there sufficient experiments?
+- Is the paper likely to be of great interest to many people, of great interest to a few people, of little interest, etc?
+
+* High Level Technical
+  
+Write high level criticism here.
+
+- *Be constructive!*
+- *Be polite!*
+- Avoid judgement. Try to come up with a constructive suggestion for each criticism you have.
+
+* Low Level Technical
+
+This a place for very specific comments.
+
+- It shows the authors you read the paper carefully.
+- Any sections or equations that weren't clear?
+- Any figures that are hard to read?
+- Typos? refs that should have been included? etc.
+
+* Review Summary
+
+In one or two sentences summarize your review.
+
+* Next Step
+
+Per Kilian's advice, what is the next thing that one could do with
+this paper? What's the next question? The next application? The next
+result?
