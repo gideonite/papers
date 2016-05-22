@@ -1,0 +1,122 @@
+#+TITLE: Deep Patient: An Unsupervised Representation to Predict Future of Patients from Electronic Health Records
+
+* Summary
+  
+This paper presents an interesting application of stack denoising
+autoencoders (SDA) to electronic medical record (EHR) data. A three
+layer SDA is trained to encode ~60,000 features from ~700,000 patients
+in a continuous 500 dimensional space. This learned feature
+representation is then used to train a random forest to predict novel
+disease occurrence a patient. Remarkable improvements are demonstrated
+over traditional dimensionality reduction techniques, namely PCA. The
+authors propose this as the first application of deep learning to
+clinical predictive modeling.
+
+* High Level Paper
+  
+It is very believable that this is the first application of SDAs to
+clinical predictive modeling and it is quite exciting to see its
+success. The paper gives the impression that much of the hard work was
+the data processing. The difficult decisions appear to be figuring out
+how to filter the data (what to select) and what to predict. This is
+difficult work, requires much acumen and the process is worth
+reporting. It would be very enlightening to see the experiments that
+were done to justify these decisions. This would help make the paper
+into a useful nugget of work that others could experiment with instead
+of an "existence" result stating that unsupervised learning is
+applicable to this task.
+
+It is understandable that the authors want to connect their work with
+the recent advances in deep learning. SDAs were indeed originally
+conceived to help train deep networks. However, since that time there
+have been advances in training deep networks such as batch
+normalization and dropout. Furthermore, it is clear from the
+supplementary material that the network does not increase with depth
+and a depth of three is not comparable to other work in deep
+learning. Instead of attributing this work to the trend, it would be
+interesting to see how these newer techniques compare. One would have
+to define a supervised task in order to do this but perhaps a deep
+network would learn an interesting feature representation as well.
+
+Given that this work lies squarely in the domain of unsupervised
+learning, it would be good to go beyond the random forest classifier
+and see some more analyses of the results as such. The authors mention
+experimenting with clustering techniques on the learn
+representation. t-SNE is another option. It is not clear to me why a
+t-SNE figure was not included.
+
+Finally, the authors seem to be walking a fine line when it comes to
+their target audience. Unfortunately, it is unlikely that a reader not
+already familiar with PCA would grok it in a single sentence
+explanation. Those people remain confused whereas readers in
+quantitative fields like statistics and machine learning loose
+interest. Generally, it is distracting from the main thesis and
+results of the paper.
+
+All of this being said, these are exciting results that are going to
+be of interest to clinicians, biologists, bioinformaticists, machine
+learners and even the general public. Perhaps for this reason, it
+difficult to strike the right tone and level of abstraction.
+
+* High Level Technical
+  
+- Generally, it seems that the authors are overly shy to report negative
+results. There are many possible reasons for this and I will avoid
+further discussion of it. A few points and questions:
+  
+- Interesting that r-precision doesn't decrease significantly as the
+time interval is increased. At some point, it certainly does and it
+would be nice to see that happen.
+
+- It is worth noting that the random forest classifier doesn't do
+terribly on the raw features. Is there an interpretation for this?
+
+- The claim that features learned by neural networks are not easily
+interpret-able deserves a citation. There is a fair amount of work that
+"reverse-engineers" neural networks to get a sense for what features
+are being learned. For example, the edge detection figures.
+
+- The LDA modeling of the text data is mentioned but not justified nor
+mentioned as a direction for further work. Why? What other techniques
+were tried?
+
+- Generally, for a machine learning practitioner it is frustrating to
+read this work because *none* of the code or data are publicly
+available. One or both of these problems could be remedied and that
+would greatly alleviate this pain that the reader is experiencing.
+
+* Low Level Technical
+
+- Who is the physician on pg. 5 and what is the variance between
+physicians?
+  
+- On pg. 6 a negative result is mentioned in the paragraph but not
+included in the figure. This comes off as being disingenuous.
+
+- The process of stacking the autoencoders could be made clearer.
+  
+- The actual data types, beyond the LDA modeling of the text, would be
+nice to see.
+
+* Review Summary
+
+This paper presents an exciting and successful application of SDAs to
+clinical predictive modeling from EHR data. It clearly demonstrates
+that machine learning has something to contribute to this
+field. Considering the acceleration of which EHRs are integrated into
+data mining pipelines, this paper will clearly stand among the first
+to bring modern machine learning techniques to these datasets.
+
+* Next Step
+
+Though I'm not familiar enough with the field, this paper feels like
+the tip of the ice berg. What isn't a next step? Still some ideas:
+
+- Any of the suggestions above.
+
+- Try doing deep learning. Take their task and train a deep full
+  connected model using all the things that people use (dropout, batch
+  norm, skip connections, whatever you name it).
+
+- Switch out the dataset. They had ~70,000 after all the
+  processing. MIMIC III is ~40,000 but hopefully already curated.
