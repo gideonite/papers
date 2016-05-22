@@ -60,43 +60,27 @@ difficult to strike the right tone and level of abstraction.
 
 * High Level Technical
   
-- Generally, it seems that the authors are overly shy to report negative
-results. There are many possible reasons for this and I will avoid
-further discussion of it. A few points and questions:
-  
-- Interesting that r-precision doesn't decrease significantly as the
-time interval is increased. At some point, it certainly does and it
-would be nice to see that happen.
+- Generally, it seems that the authors are overly shy to report negative results. There are many possible reasons for this and I will avoid further discussion of it. A few points and questions: 
 
-- It is worth noting that the random forest classifier doesn't do
-terribly on the raw features. Is there an interpretation for this?
+- Interesting that r-precision doesn't decrease significantly as the time interval is increased. At some point, it certainly does and it would be nice to see that happen.
 
-- The claim that features learned by neural networks are not easily
-interpret-able deserves a citation. There is a fair amount of work that
-"reverse-engineers" neural networks to get a sense for what features
-are being learned. For example, the edge detection figures.
+- It is worth noting that the random forest classifier doesn't do terribly on the raw features. Is there an interpretation for this?
 
-- The LDA modeling of the text data is mentioned but not justified nor
-mentioned as a direction for further work. Why? What other techniques
-were tried?
+- The claim that features learned by neural networks are not easily interpret-able deserves a citation. There is a fair amount of work that "reverse-engineers" neural networks to get a sense for what features are being learned. For example, the edge detection figures.
 
-- Generally, for a machine learning practitioner it is frustrating to
-read this work because *none* of the code or data are publicly
-available. One or both of these problems could be remedied and that
-would greatly alleviate this pain that the reader is experiencing.
+- The LDA modeling of the text data is mentioned but not justified nor mentioned as a direction for further work. Why? What other techniques were tried?
+
+- Generally, for a machine learning practitioner it is frustrating to read this work because *none* of the code or data are publicly available. One or both of these problems could be remedied and that would greatly alleviate this pain that the reader is experiencing.
 
 * Low Level Technical
 
-- Who is the physician on pg. 5 and what is the variance between
-physicians?
+- Who is the physician on pg. 5 and what is the variance between physicians?
   
-- On pg. 6 a negative result is mentioned in the paragraph but not
-included in the figure. This comes off as being disingenuous.
+- On pg. 6 a negative result is mentioned in the paragraph but not included in the figure. This comes off as being disingenuous.
 
 - The process of stacking the autoencoders could be made clearer.
   
-- The actual data types, beyond the LDA modeling of the text, would be
-nice to see.
+- The actual data types, beyond the LDA modeling of the text, would be nice to see.
 
 * Review Summary
 
@@ -114,9 +98,6 @@ the tip of the ice berg. What isn't a next step? Still some ideas:
 
 - Any of the suggestions above.
 
-- Try doing deep learning. Take their task and train a deep full
-  connected model using all the things that people use (dropout, batch
-  norm, skip connections, whatever you name it).
+- Try doing deep learning. Take their task and train a deep full connected model using all the things that people use (dropout, batch norm, skip connections, whatever you name it).
 
-- Switch out the dataset. They had ~70,000 after all the
-  processing. MIMIC III is ~40,000 but hopefully already curated.
+- Switch out the dataset. They had ~70,000 after all the processing. MIMIC III is ~40,000 but hopefully already curated.
