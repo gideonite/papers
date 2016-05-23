@@ -1,0 +1,95 @@
+#+TITLE: Chapter 4: Protein Interactions and Disease
+
+* Summary
+  
+This paper is a useful high level overview of the questions revolving
+around protein interactions with some discussion on how this relates
+to disease. Protein interaction is in fact a fundamental subject and
+therefore is related to most if not all biological questions and
+problems, including disease. With our understanding of protein
+interactions (circa 2012), it is almost a tautology to state that it
+is fundamental to our understanding of disease. The authors do a good
+job of giving a high level overview of the problems we face in
+understanding protein interactions both from experimental and
+computational points of view.
+
+* High Level Paper
+  
+Considering the broad scope, the authors did a great job of making the
+material accessible. It is impossible to go into details at this
+level. For a computer scientist, this was a great way of getting an
+idea of some of the biological meaning and implications of protein
+interactions. It is also a great way to get an idea for the state of
+the art in both the wet and dry lab (circa 2012).
+
+This is the place for general comments that are subjective in nature.
+
+* High Level Technical
+  
+I will summarize the ideas. Protein interactions can mean anything
+from shared evolutionary history to functional binding affinities and
+the formation of higher level complexes. Furthermore, protein
+interactions are often of degree > 2, in other words, pair-wise
+interactions are only a first approximation. Keep this is mind when
+looking at protein-protein interaction (PPI) graphs and figures.
+
+There are two main ways to identify protein interactions in the
+lab. (1) "Biophysical methods," in which one employs techniques like
+X-ray crystallography, NMR spectroscopy, etc. to get at the physical
+structure of the protein molecules. I assume these methods allow us to
+literally see how proteins bind to form complexes. (2)
+"High-throughput methods," of which there are two main types. The
+first is yeast two-hybrid (Y2H) in which a system is setup so that
+when two proteins interact, a certain gene is expressed --- somehow
+you put the two proteins around the gene in DNA and when they bind
+together this causes the gene to be expressed which you can
+measure. This is great but comes with a few setbacks: only the
+presence/absence of interaction is detected, not the type of form of
+interaction, it is but a pair-wise method and therefore can only
+approximate the reality which is a higher-order interaction of
+proteins, also you can't detect proteins which are themselves involved
+in the gene regulatory system (presumably, not sure how this
+works). The second high-throughput method is the so-called "indirect,"
+method. This involves measuring gene co-expression and making the
+assumption that gene co-expression is correlated with PPI.
+
+There are two main so-called "computational" techniques for predicting
+PPI. The first is basically the supervised approach: take existing
+measurements of PPI and try to predict. The input data could be
+co-expression, PPI data from structural-type experiments (NMR, etc),
+sequence features like interacting domains, etc. The second is a more
+Bayesian approach in which one assumes certain models of evolution
+like pairs of residues in a single protein co-evolve and therefore
+pairs of pairs that co-evolve may be meaningful. Or, pairs between
+proteins co-evolve. A natural consequence of this assumption is that
+there is some relationship between the phylogenetic trees of
+proteins. This may need to be corrected for the overall evolutionary
+history of the organisms from which the proteins comes from. Note that
+these so-called "theoretical" approaches are sequence-based.
+
+* Low Level Technical
+  
+It'd be nice to a have a figure of a biological pathway versus a PPI
+network. There is only a single PPI network figure, the hairball,
+which is good but it would be nice to contrast with a clearer one as
+well to get a sense for the range of possibilities.
+
+Otherwise, LGTM.
+
+* Review Summary
+
+This is a very useful introductory review of the state of the art of
+protein interactions circa 2012. Experimental and computational
+methods are discussed, compared and contrasted as well as the overall
+biological difficulties that underlie both approaches. One such
+biological difficulty is the fact that proteins are not static objects
+but are in fact constantly changing --- through synthesis and
+degradation --- through time.
+
+* Next Step
+
+Choose an approach and see what can be brought to the table. Also, get
+up to date since this work is likely out of date. What problems are
+proteomics/interactomics/compbiometricians interested in these days?
+
+#  LocalWords:  PPI NMR
