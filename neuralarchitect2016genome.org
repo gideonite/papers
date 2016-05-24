@@ -1,0 +1,85 @@
+#+TITLE: Genetic Architect: Discovering Genomic Structure with Learned Neural Architectures
+
+* Summary
+  
+This paper presents some incremental improvements to DeepBind and
+describes the methodology used to make discover these improvements. A
+general framework called Genetic Architect is presented for iterating
+through deep learning models in situations where data properties are
+unclear (translational invariance, etc).
+
+* High Level Paper
+  
+There is some tension in the paper between Genetic Architect, a
+general method, and the specifics of the improvements made to
+DeepBind. While it's clear that the authors would like to emphasize
+the generality of their new framework, all of the figures are
+concerned with the specific DeepBind use case. The result is a
+somewhat muddy thesis.
+
+The authors could improve upon this by going deeper into Genetic
+Architect: presenting the algorithm in full clarity (including user
+interventions as a step in the algorithm) and with more examples from
+different domains. While it is easier for humans to grok the nature of
+cat image data, the neural networks that have made the breakthrough
+are themselves not obvious architectures. Can Genetic Architect
+improve upon them? Can it rediscover them?
+
+To biologists, this paper is an incremental improvement and is
+unlikely to be of great interest. To computer scientists, there is too
+much time spent on the particular example of DeepBind.
+
+This is the place for general comments that are subjective in nature.
+
+* High Level Technical
+  
+I do not understand the fundamental assumption of Genetic Architect
+which is that, given a fully trained model, one can optimize it based
+on a few sample points (no matter how confident the prediction may
+be). This goes back to the lack of elucidation regarding the Genetic
+Architect algorithm and could easily be clarified by adding another
+section containing these details.
+
+While it's true that our intuition for genomic data is fundamentally
+different than our intuition for image or natural language data, that
+does not mean that it is not present. The argument made about our lack
+of understanding of biological data can just as easily be applied to
+other areas of science, such as astronomy, in which we cannot simply
+use our eyes and ears to relate the inputs and outputs to daily
+life. Biological may be more complex, but it also may not be and the
+motivational claims made by the authors are missing the many
+references needed to make them.
+
+* Low Level Technical
+  
+There are a number of places with unsubstantiated conclusions, such as
+on pg. 3 "fully-connected layers were preferred to convolutional
+layers as it made processing global information more important." This
+may or may not be true, without experiments this claim about "global
+information" is unsubstantiated.
+
+How significant are the improvement discussed in section 4.2.1? Do you
+have standard deviation across multiple training runs?
+
+Please provide a citation(s) justifying the claim in the first
+sentence of the conclusion "...architectures on [genomic] datasets
+where human priors are not available."
+
+The term "Genetic Architect" is confusing when appearing next to
+gene-related datasets. AFAIU it is more related to genetic programming
+than to genomics.
+
+* Review Summary
+  
+This is a promising first step in validating and extending the results
+of DeepBind. While this result is conflated with the Gene Architect
+framework, which itself may be a promising algorithm for triaging deep
+learning models in biology, there is some significance and relevance
+of this confirming result.
+
+* Next Step
+
+How can DeepBind really "disrupt" computational genomics as it
+currently stands? What are the largest pressing questions that
+biologists and computational biologists want answered that current
+models are not answering? What do we want to predict?
