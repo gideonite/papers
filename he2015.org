@@ -1,0 +1,82 @@
+#+TITLE: Deep Residual Learning for Image Recognition
+
+* Summary
+
+The paper presents a novel idea for addressing the so-called
+"degradation" problem: deeper networks generalize worse than shallow
+networks despite the facts that (1) they have more parameters and (2)
+the shallow network always exists as a solution in deeper networks by
+setting the extra layers to identity. The idea is to partition the
+layers into blocks (of say two or three layers) and for each one,
+manually add in the output of the previous block to the current
+one. This addition operation is called a "skip-connection." This
+architecture won 1st place in ILSVRC 2015 and the paper presents other
+interesting properties of deep residual networks as well.
+
+* High Level Paper
+  
+Given the generality of the architecture and the strength of the
+results, this paper is clearly going to be relevant to many people in
+any field related to or utilizing deep learning algorithms. This paper
+has pushed forward the state-of-the-art in an exciting way and will
+certainly lead to more research in the field as well as many
+applications.
+
+There is a fair amount of work relating to interpretability of neural
+networks, especially with convolutional neural networks. It would be
+interesting to see what effect the skip-connections have on edge
+detectors or other features that are learned by the network.
+
+* High Level Technical
+
+The paper can be broken down into a few pieces: the degradation
+problem, some intuition about the degradation problem which is based
+on the fact that deep networks contain shallow networks as a solution,
+the "skip-connection" solution a.k.a. residual learning, and finally
+the striking results. These different factors of the paper could be
+better explained with better terminology. For example, the term
+residual learning is misleading because there is no sub-field of
+machine learning called residual learning. As of now, this /is/
+residual learning. That is, the paper immediately proposes a general
+term for something which is actually quite specific and this is quite
+confusing when encountering this work for the first time. Nothing
+needs to be changed, but something like a road-map would be helpful.
+
+The intuition piece of the paper is quite thought-provoking and is
+very important to understanding the motivation for the degradation
+problem. Naturally, it would be good to see something quantitative or
+rigorous behind this. There may be some mathematical aspects of matrix
+manifolds or research in optimization that may elucidate the point
+that learning the zero is easier than learning one. Perhaps this is
+best left to a theory paper.
+
+* Low Level Technical
+  
+ResNet (A), (B) and (C) are not clearly defined. Specifically, it is
+not clear how to project into a higher dimensional space from a lower
+one without zero-padding. If it is by applying more filters, then this
+could be stated more clearly.
+
+Figure 4 is used to elucidate two points but only highlights one by
+making the accuracy curves bold. Figure 4 would be clearer if broken
+up into two figures but perhaps there isn't enough real estate for
+this.
+
+* Review Summary
+  
+The paper presents an architecture that not only won ILSVRC, but also
+introduces a qualitatively new building block for neural network
+architectures: the "skip-connection." By using skip-connections, a
+very deep neural network is encouraged to learn the residual function
+instead of the function itself and is able to overcome the degradation
+problem. Specifically, very deep neural networks are finally able to
+outperform their shallow counterparts.
+
+* Next Step
+
+It would be interesting to see what it takes to break ResNets. What if
+you do ten times as many layers?
+
+What other neural network architectures can this be applied to?
+Specifically, can we bring ResNets to recurrent neural networks as
+well?
