@@ -1,0 +1,82 @@
+#+TITLE: Identity Mappings in Deep Residual Networks
+
+* Summary
+  
+This paper presents an interesting analysis of residual networks ---
+both contextualizing them with highway networks as well as showing and
+explaining why the residual implementation is more effective. The
+authors provide a generalized formulation of ResNets and analyze both
+theoretically and experimentally the effects of choosing different
+activation and skip-connection mappings between residual units. The
+conclusion is that the identity function is optimal for both
+activations and skip-connections. There is additional improvement by
+regularizing using batch normalization before the unit. The intuition
+for these results is that the identity mapping allows for maximum flow
+of information, both forward during the forward-pass (e.g. evaluation
+or prediction) and backward during backpropagation.
+
+* High Level Paper
+  
+The paper makes good use of simple mathematics to: (1) make a simple
+unifying framework for residual and highway networks, (2) explain the
+intuition between propagation of residuals both in the forward-pass
+and the backward-pass and (3) explain the effects of having
+non-identity activation and skip-connection mappings. This unifying
+framework, and the corresponding analysis, is elegant and original.
+
+The paper has a good balance of theory as well as an important result:
+identity activations, identity skip-connections and BN preceding the
+residual unit make for a new-state-of-the-art for residual networks,
+and neural network models in general. This paper, combined with the
+first paper on residual networks, form a more complete theory of very
+deep neural networks. So it is a necessary extension of the first
+paper and is likely to have a broad audience among pure machine
+learners and users of machine learning algorithms, specifically deep
+neural networks.
+
+* High Level Technical
+
+It is interesting to note that the previous paper, "Deep Residual
+Learning for Image Recognition," puts an emphasis on the so-called
+degradation problem, whereas in this paper. Network depth no longer
+seems to be included as a parameter in experiments. However, the
+authors claim in section 3.2 that complex skip-connections result in
+degradation (due to difficult optimization, not a decrease in model
+complexity) without properly testing for degradation by varying
+network depth. The solution is to do experiments to add the network
+depth dimension to the battery of activation function and
+skip-connection mapping experiments.
+
+* Low Level Technical
+  
+The single variable in Table 1 is put in the remark column, the least
+striking of all the columns. Since the initialization of $b$ is the
+most important variable, the table should be reorganized to make it
+obvious.
+
+Why not show some quantitative results supporting the claim that ReLU
+units learn the identity function in section 4.2, "Ease of
+optimization"?
+
+What is the motivation for using bottleneck units in section 4.1 in
+activation experiments and not in skip-connection experiments? It's
+fine to do this but it'd be nice to know why.
+
+What does the paragraph "BN after addition" in section 4.1 have to do
+with Figure 4(b)?
+
+* Review Summary
+  
+This papers presents a theoretical framework for understanding
+residual networks and highway connections in very deep neural
+networks. It's exciting to see some theoretical motivation for
+emergent properties of very deep neural networks: (1) optimization is
+the major difficulty, not model expressiveness, (2) data propagation,
+both forward and backward is the most important.
+
+* Next Step
+
+Same old tune: interpretability and applicability to other neural
+network models and datasets. The results will remain purely
+theoretical until we can see via some mechanism of model
+interpretation what the emergent properties of very deep networks are.
