@@ -1,0 +1,84 @@
+#+TITLE: Machine learning approaches to analyze histological images of tissues from radical prostatectomies
+
+* Summary
+
+This paper presents an interesting application of general feature
+extraction techniques from computer vision in pathology images. By
+combining a pixel intensity feature with image texture feature, the
+authors are able to circumvent some of the challenges of detecting
+tumor grade from pathology specific features (namely lumens). These
+features are used to train a two-stage classification pipeline which
+first uses an SVM to classify patches as stromal or epithelial, and
+then classifies the epithelial tissue as malignant or prostate
+cancer. The stromal tissue, identified by the first stage of the
+pipeline, is ignored by the second stage.
+
+* High Level Paper
+  
+The paper appeals to researchers who are already in the field of
+computational pathology. Machine learning researchers may be interested
+in the result that general computer vision based features beat
+pathology lumen-based features that make assumptions about tissue
+structure. Although quite a bit of effort went into carefully
+preparing this dataset, pathologists may be interested in seeing a
+machine learning pipeline that trains specific models to address
+different aspects of histological analysis: tissue classification and
+gland classification (benign / cancer).
+
+The paper would benefit from expanding the target audience from
+computational pathology to more general fields like machine learning
+and pathology. For example, the description in section 3.1 of the
+modeling assumptions that go into the choice of features is great and
+could be expanded upon, namely by relating it directly to the choices
+around uniform rotationally-invariant LBPs and rotation invariant
+local variance (VAR). People in the general field of machine learning
+as well as in pathology may be interested in the intuition that went
+into that decision (and the corresponding experiments with various
+combinations of LBP and VAR).
+
+Where else is the joint histogram of LBP and VAR used? Is this
+standard practice?
+
+* High Level Technical
+  
+Just as there could be more explanation of the feature extraction
+choices, there could also be more discussion of the choice of
+algorithms and model. Why are the two pieces of the pipeline trained
+separately and not integrated into some sort of joint/hierarchical
+model?
+
+* Low Level Technical
+ 
+- Table 5 requires lookup in Table 2. This is unnecessary and obfuscates
+  the meaning of the results --- different features, and their
+  combinations result in different accuracies.
+  
+- None of the tables highlight the best score. This is hard on the eyes.
+  
+- In fact, a line plot may be easier to read than these tables of
+  numbers. It would also save space.
+  
+- I am at a loss as to why the authors chose to use the Jaccard index
+  for error in binary classification. Presumably, this is to compare
+  with the cluster-based benchmark provided by Chen et al. 2013, but it
+  is not natural in this setting. In fact, it is equivalent to accuracy
+  in the binary classification case.
+  
+- There is some discussion of computational limitations. This may be
+  more significant in a true clinical setting, but it is clear that this
+  dataset very much belongs on the side of research and so it doesn't
+  make sense to invert the traditional 80-20 train-test split.
+
+* Review Summary
+
+This paper presents an exciting application of traditional techniques
+in computer vision to prostate cancer histology to classify patches of
+histology images by tissue type and tumor grade. Though the dataset is
+quite specialized, it clearly proves that there is a strong signal in
+the data and more work to be done.
+
+* Next Step
+
+An obvious thing to try in this day and age is whether deep learning,
+specifically the feature learning aspects of deep learning, can be
+applied here.
