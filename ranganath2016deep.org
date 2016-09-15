@@ -1,0 +1,105 @@
+#+TITLE: Deep Survival Analysis
+
+* Summary
+  
+In this paper the authors present an interesting application of their
+method, Deep Exponential Families (DEFs), to the task of survival
+analysis. The authors treat DEFs mainly as a black-box module which
+learns a latent represntation of a patient's EHR. Once the DEF learns
+a latent representation that fits (i.e. generates) the observed EHR
+data, the latent representation of a patient's EHR can be used in a
+standard generative Cox regression model. This two-part generative
+model elegantly addresses two major problems in survival analysis:
+abundandtly missing data and the pitfalls of simple linear models.
+
+The authors also depart from traditional survival analysis by aligning
+the longitudinal data by the time of failure rather than some
+arbitrary start time such as the beginning of a clinical trial. This
+addresses a major problem in EHR data in which EHRs start, become
+censored and end in a completely unsynchronized manner.
+
+* High Level Paper
+  
+The prose of the paper was quite elegant and Figure 1 is quite useful
+for understanding failure alignmnent. The paper would benefit from one
+or two more figures. Ultimately, not all readers are text-oriented and
+the authors need to repeat themselves in multiple medias if they want
+to get their point across.
+
+The nugget of innovation in this paper is appropriately sized though
+this assumes that readers are familiar with DEFs, which is unlikely to
+be the case. DEFs are new to the machine learning community and are
+likely unheard of in the medical informatics community. Therefore, the
+paper would benefit a high-level explanation of DEFs.
+
+Researchers in both the machine learning and medical informatics
+community will be interested in this work. The model is modular and
+elegant, and it outperforms the CHD scores, the current
+state-of-the-art.
+
+Experiments are quite lacking. It would be interesting to see: risk
+tasks other than CHD, likelihood across different slices of the data
+/and/ across different latent representation sizes ($K =
+25,50,75,100$). Can you predict diagnoses?
+
+* High Level Technical
+  
+The model is basically a generative version of Cox regression which
+uses a latent representation as a preprocessing step. In other words,
+the latent representation and the generative model for failure times
+are trained separately. Cox regression assumes independence in the
+covariates but there doesn't appear to be a guarentee that the latent
+representation satisfies this assumption. Generally, there is no
+intuition given for why this works --- why does the latent
+representation help the Cox regression?
+
+* Low Level Technical
+  
+The nugget of this paper could be clarified in the details of the
+presentation. For example, the lines in the generative model in
+Section 3.3 could be reordered so that the two parts of the model, the
+DEF and the rest of it, are clearly separated. Instead the DEF line is
+in amongst the rest of the model.
+
+Also, as mentioned earlier some kind of graphic (like a graphical
+model...) for the generative process would reduce cognitive load for
+many readers.
+
+The width of the network is $K=25,50,75,100$ but what is the depth? Am
+I misunderstanding something about DEFs?
+
+Perhaps getting ahead of myself here, but how long does it take to
+evaluate the model, once it has been trained? Could we in principle
+ship this to doctors tomorrow?
+
+There are many typos. Some of them are confusing. For example, the end
+of Section 3.3, marginally dependent or marginally /independent/? I
+assume it's the latter.
+
+* Review Summary
+  
+This paper is an exciting and elegant application of deep exponential
+families, the state-of-the-art in generative machine learning models,
+to the real problem of predicting Coronary Heart Risk, a very real
+problem in healthcare. It demonstrates not only that these models are
+useful, but also that we can do better in healthcare.
+
+This reads like an advanced draft but a draft nonetheless.
+
+* Next Step
+  
+Speaking from the standpoint of not knowing how to actually get this
+stuff to work, there are a number of things to think about:
+
+- What if you use a discriminative model for the Cox regression? Do
+  the DEF but then do traditional survival analysis on the result.
+
+- What about text data from doctors notes? I would think that the Blei
+  group would have jumped at this and I wonder why they didn't.
+  
+- A naive question: Can the model be trained jointly (i.e. latent
+  representation + survival model)? How?
+  
+- In principle, the latent representation learned by the DEF has
+  nothing to do with CHD risk or survival analysis. What else can you
+  do with it? (Paper generating machine).
