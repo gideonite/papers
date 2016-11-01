@@ -1,0 +1,35 @@
+#+TITLE: Systematic identification of cancer driving signaling pathways based on mutual exclusivity of genomic alterations
+
+* Summary
+  
+In this paper the authors present a novel method for identifying driver mutations in cancer. The work combines previous work done on identifying driver mutations under the mutual exclusivity idea with gene networks. Motivated by the problem of moving beyond the low hanging fruit of identifying individual drivers with basic statistical tests, the authors take advantage of a previous observation that driver genes that affect the same pathway or function should exhibit a mutual exclusivity pattern. In other words, if one considers cancer as an evolutionary process, once a cell acquires a cancer mutation in a pathway, there is zero evolutionary pressure to gain another mutation in that pathway. Up until the first mutation event in a pathway, the mutation process is random, so one expects two driver genes in the same pathway to not be co-mutated in single samples.
+
+Faced with the problem of an exponential search of subsets, the authors take advantge of known gene networks to reduce the search space significantly. In this way, they only consider subsets that are known to share some pathway. Quantitatively in terms of the graph structure, all the elements of the set must be part of a path leading to a shared leaf.
+
+Candidate sets are scored by doing a hypergeometric test on one-vs-all basis. There are basically 4 types of events: mutated in geneA, mutated in geneB, mutated in both and mutated in neither. When doing this on a one-vs-all basis, lump all the genes that are not geneA into geneB. This is done for all genes in a candidate set giving that many p-values. These p-values are corrected for multiple hypothesis testing by sampling p-values from random permutations. Then the smallest p-value is chosen as the score for that group. Essentially, the authors are testing whether each gene in a candidate set is mutated independently of the other genes.
+
+* High Level Paper
+  
+Overall, the paper is clear and concise. The idea properly extends previous work in mutual exclusivity and pathway analysis. Furthermore, the authors take some effort to understand why their method works by running experiments that control for different parts of their pipeline. The paper is likely to be of interest to many in the computational biology and cancer domains since it is a demonstration of a computational technique that effectively finds new driver genes.
+
+* High Level Technical
+
+Not being fully familiar with this field, it's hard to judge just how new and important using the hypergeometric distribution for testing mutual exclusivity patterns really is. Perhaps it is already well-understood by the community but it is mentioned a number of times and the reader has to page through the supplementary material to find out how exactly it is being done (by essentially identifying four events as discussed above in the Summary section). Meanwhile, a lot of space is devoted to high-level descriptions. Considering how simple the method is, it would be worth trading some of the high-level discussion for more detail on the actual technique presented in the paper.
+
+In that vein, the authors could do a better job of illustrating the full end-to-end pipeline instead of breaking it into a number of sections that do not necessarily follow the real order that the pipeline is run in. The word "pipeline" itself is never mentioned even though this technique is very much "pipeline-esque." This can be resolved by including an end-to-end figure of the pipeline.
+
+* Low Level Technical
+  
+There is an important typo when describing the initial mutual exclusivity score of a set --- the equation uses max instead of min.
+
+* Review Summary
+
+This is an interesting paper that brings together work in mutual exclusivity and gene networks to identify new cancer genes, an important task for progressing oncology research. A couple simple ideas are brought together to produce novel results, that is, new driver gene candidates.
+
+* Next Step
+
+1. While the ideas involved in the technique are relatively simple, the technique itself feels like a bit of a hack --- a bit like a number of things strung together with some arbitrary (or not?) decisions made along the way. The authors themselves bring up the decision of what graph property to use when defining candidate gene sets. Can we do better? Can we have a system that does more of this automatically?
+
+2. Zooming out, the technique uses basic statistics and basic discrete graph algorithms to do the job. Can we do better by using more sophisticated quantitative techniques? Can we use machine learning?
+
+I suppose the moral of these two points is: not too interested in extending their technique, but the problem itself is quite interesting.
